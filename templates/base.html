@@ -1,0 +1,42 @@
+<!doctype html>
+{% load static %}
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block page_title %}{% endblock %}</title>
+
+    {# --- css --- #}
+    <link rel="stylesheet" href="{% static 'css/semantic.min.css' %}">
+    <style type="text/css">
+        body {
+            background-color: #dadada;
+        }
+        body > .container {
+            height: 100%;
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="ui container">
+    {% include '_message.html' %}
+    {% block content %}{% endblock %}
+</div>
+
+{# TODO #}
+{% if user.is_authenticated %}
+<a href="{% url 'accounts:logout' %}">ログアウト</a> | <a href="{% url 'accounts:profile' %}">プロフィール</a> | <a href="{% url 'shop:index' %}">ショップ</a>
+{% endif %}
+
+{# --- js --- #}
+<script src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'js/semantic.min.js' %}"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

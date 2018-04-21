@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}ログイン{% endblock %}
+
+{% block extra_css %}
+<style type="text/css">
+    .container > .grid {
+        height: 100%;
+    }
+
+    .column {
+        max-width: 400px;
+    }
+
+    p.red.message {
+        color: #db2828;
+        margin: 0.8em 0 0 0.8em;
+        text-align: left;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <h2 class="ui teal image header">
+            <img src="{% static 'images/logo.png' %}" class="image">
+            <div class="content">ログイン</div>
+        </h2>
+
+        <form action="{% url 'accounts:login' %}" method="post" class="ui form">
+            <div class="ui stacked segment">
+                {# --- 全体エラーメッセージ --- #}
+                {% if form.non_field_errors %}
+                <div class="ui red message">
+                    <div class="header">エラー</div>
+                    <ul class="list">
+                        {% for non_field_error in form.non_field_errors %}
+                        <li>{{ non_field_error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                {% for field in form %}
+                <div class="field{% if field.errors %} error{% endif %}">
+                    {# --- 入力フィールド --- #}
+                    <div class="ui input{% if field.errors %} error{% endif %}">
+                        {{ field }}
+                    </div>
+                    {# --- 入力フィールドごとのエラーメッセージ（最初のエラーのみを表示） --- #}
+                    {% if field.errors %}
+                    <p class="red message">{{ field.errors.0 }}</p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+
+                {% csrf_token %}
+                <button type="submit" class="ui fluid teal submit button">ログイン</button>
+            </div>
+        </form>
+
+        <div class="ui message">
+            <a href="{% url 'accounts:register' %}">新規ユーザー登録はこちら</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

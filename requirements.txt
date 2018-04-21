@@ -1,0 +1,4 @@
+Django==1.11.11
+django-environ==0.4.4
+django-debug-toolbar==1.9.1
+stripe==1.79.1

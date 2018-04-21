@@ -1,0 +1,9 @@
+{% block messages %}
+{% if messages %}
+<div class="ui relaxed divided list">
+    {% for message in messages %}
+    <div class="ui {% if message.tags %}{{ message.tags }}{% endif %} message">{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock messages %}

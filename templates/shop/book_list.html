@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block page_title %}商品リスト{% endblock %}
+
+{% block extra_css %}
+<style type="text/css">
+    .container > .grid {
+        height: 100%;
+    }
+
+    .table {
+        max-width: 400px;
+    }
+
+    .ui.grid > .column {
+        padding-top: 0.3em !important;
+        padding-bottom: 0.3em !important;
+    }
+
+    p.red.message {
+        color: #db2828;
+        margin: 0.8em 0 0 0.8em;
+        text-align: left;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<form method="get" action="{% url 'shop:index' %}" class="ui form">
+    <div class="ui stacked segment">
+        <div class="field{% if field.errors %} error{% endif %}">
+            <div class="ui input">
+                <input type="text" name="keyword" placeholder="キーワード" value="{{ keyword|default:'' }}">
+            </div>
+        </div>
+        <button type="submit" class="ui fluid teal submit button">検索</button>
+    </div>
+</form>
+
+<div class="ui four cards">
+    {% for book in book_list %}
+    <div class="ui card">
+        <div class="image">
+            {% if book.image_path %}
+            <img src="{% get_media_prefix %}{{ book.image_path }}">
+            {% else %}
+            <img src="{% static 'shop/images/no-image.png' %}">
+            {% endif %}
+        </div>
+        <div class="content">
+            <div class="header"><a href="{% url 'shop:detail' book.id %}">{{ book.title }}</a></div>
+            <div class="ui divided list">
+                <span class="item">
+                    <div class="ui horizontal label">著　者</div>{{ book.authors.all.0 }}{% if book.authors.all.1 %}　他{% endif %}
+                </span>
+                <span class="item">
+                    <div class="ui horizontal label">価　格</div>{{ book.price|intcomma }}円
+                </span>
+                <span class="item">
+                    <div class="ui horizontal label">出版社</div>{{ book.publisher }}
+                </span>
+                <span class="item">
+                    <div class="ui horizontal label">出版日</div>{{ book.publish_date|date:"Y年m月d日" }}
+                </span>
+                <span class="item">
+                    <div class="ui horizontal label">詳　細</div>
+                    <div class="description">{{ book.description|default:""|linebreaksbr|truncatechars_html:20 }}</div>
+                </span>
+            </div>
+        </div>
+        <div class="extra content">
+            <a href="{% url 'shop:detail' book.id %}" class="ui right floated positive button">商品詳細</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

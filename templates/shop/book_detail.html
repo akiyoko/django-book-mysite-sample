@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}商品リスト{% endblock %}
+
+{% block extra_css %}
+<style type="text/css">
+</style>
+{% endblock %}
+
+{% block content %}
+商品詳細
+<br>
+<br>
+<form action="{% url 'shop:checkout' %}" method="post">
+    <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="{{ stripe_pub_key }}"
+            data-label="クレジットカードで支払う"
+            data-name="クレジットカード支払い"
+            data-description="{{ book.title }}"
+            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+            data-amount="{{ book.price }}"
+            data-currency="jpy"
+            data-locale="auto">
+    </script>
+    <input type="hidden" name="item_id" value="{{ book.id }}">
+    {% csrf_token %}
+</form>
+
+{% endblock %}
