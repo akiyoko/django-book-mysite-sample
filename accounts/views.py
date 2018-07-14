@@ -91,7 +91,7 @@ login = LoginView.as_view()
 
 class LogoutView(View):
     def get(self, request, *args, **kwargs):
-        if request.user.is_authenticated():
+        if request.user.is_authenticated:
             # ロギング
             logger.info("User(id={}) has logged out.".format(request.user.id))
             # ログアウト処理
@@ -131,20 +131,3 @@ class ProfileView(LoginRequiredMixin, View):
 
 
 profile = ProfileView.as_view()
-
-
-import django_tables2 as tables
-from shop.models import Book, Author
-from .models import CustomUser
-
-class SimpleTable(tables.Table):
-    class Meta:
-        model = CustomUser
-
-class SimpleView(View):
-    def get(self, request, *args, **kwargs):
-        queryset = CustomUser.objects.all()
-        table = SimpleTable(queryset)
-        return render(request, 'accounts/simple_list.html', {'table': table})
-
-simple = SimpleView.as_view()
