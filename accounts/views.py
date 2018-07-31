@@ -14,6 +14,10 @@ logger = logging.getLogger(__name__)
 
 class RegisterView(View):
     def get(self, request, *args, **kwargs):
+        # すでにログインしている場合はショップ画面へリダイレクト
+        if request.user.is_authenticated:
+            return redirect(reverse('shop:index'))
+
         context = {
             'form': RegisterForm(),
         }
@@ -48,7 +52,7 @@ register = RegisterView.as_view()
 class LoginView(View):
     def get(self, request, *args, **kwargs):
         """GETリクエスト用のメソッド"""
-        # 既にログインしている場合はショップ画面へリダイレクト
+        # すでにログインしている場合はショップ画面へリダイレクト
         if request.user.is_authenticated:
             return redirect(reverse('shop:index'))
 

@@ -1,0 +1,7 @@
+[run]
+branch = True
+omit =
+        *migrations*
+[report]
+omit =
+        *venv*

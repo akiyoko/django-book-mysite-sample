@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    volumes:
+      - data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: mysite
+      MYSQL_USER: mysiteuser
+      MYSQL_PASSWORD: mysiteuserpass
+    restart: always
+
+  web:
+    build: .
+    command: sh -c "sleep 3; python3.6 manage.py runserver 0.0.0.0:8000 --settings config.local_settings"
+    volumes:
+      - .:/root/mysite
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+volumes:
+  data:
+    driver: local
