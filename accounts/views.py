@@ -1,10 +1,11 @@
 import logging
 
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views import View
 
 from .forms import LoginForm, RegisterForm, ProfileForm
@@ -43,7 +44,7 @@ class RegisterView(View):
         # ログイン処理（取得した Userオブジェクトをセッションに保存 & Userデータを更新）
         auth_login(request, user)
 
-        return redirect('/accounts/profile/')
+        return redirect(settings.LOGIN_REDIRECT_URL)
 
 
 register = RegisterView.as_view()
