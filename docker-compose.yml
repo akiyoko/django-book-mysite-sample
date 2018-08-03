@@ -15,7 +15,7 @@ services:
 
   web:
     build: .
-    command: sh -c "sleep 3; python3.6 manage.py runserver 0.0.0.0:8000 --settings config.local_settings"
+    command: sh -c "sleep 3; python3.6 manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/root/mysite
     ports:

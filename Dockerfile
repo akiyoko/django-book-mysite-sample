@@ -4,7 +4,7 @@ ENV PYTHONUNBUFFERED 1
 ENV PYTHONIOENCODING utf-8
 
 ENV HOME /root
-ENV DEPLOY_DIR $HOME/mysite
+ENV DEPLOY_DIR ${HOME}/mysite
 
 RUN apt-get update
 
@@ -25,7 +25,7 @@ RUN apt-get install -y wget \
     libssl-dev \
     # https://stackoverflow.com/a/29862854
     libsqlite3-dev
-WORKDIR $HOME
+WORKDIR ${HOME}
 RUN wget https://www.python.org/ftp/python/3.6.6/Python-3.6.6.tgz \
     && tar zxf Python-3.6.6.tgz \
     && cd Python-3.6.6 \
@@ -44,7 +44,7 @@ RUN apt-get install -y libmysqlclient-dev
 RUN apt-get install -y sqlite3
 
 # Deploy Django project
-RUN mkdir -p $DEPLOY_DIR
-WORKDIR $DEPLOY_DIR
-ADD requirements.txt $DEPLOY_DIR
+RUN mkdir -p ${DEPLOY_DIR}
+WORKDIR ${DEPLOY_DIR}
+ADD requirements.txt ${DEPLOY_DIR}
 RUN pip3 install -r requirements.txt
