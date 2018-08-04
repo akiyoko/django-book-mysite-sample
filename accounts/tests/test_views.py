@@ -2,9 +2,6 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase, modify_settings, override_settings
 
 
-@modify_settings(
-    MIDDLEWARE={'remove': ['debug_toolbar.middleware.DebugToolbarMiddleware']},
-)
 class TestRegisterView(TestCase):
     """RegisterViewのテスト"""
 

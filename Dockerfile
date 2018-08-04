@@ -48,3 +48,6 @@ RUN mkdir -p ${DEPLOY_DIR}
 WORKDIR ${DEPLOY_DIR}
 ADD requirements.txt ${DEPLOY_DIR}
 RUN pip3 install -r requirements.txt
+
+# Set env for local
+ENV DJANGO_SETTINGS_MODULE config.settings.local

@@ -1,10 +1,20 @@
-from .settings import *
+from .base import *
 
-SECRET_KEY = 'FIXME'
+
+#####################
+# Security settings #
+#####################
 
 DEBUG = True
 
+SECRET_KEY = '<fake-secret-key>'
+
 ALLOWED_HOSTS = ['*']
+
+
+############
+# Database #
+############
 
 DATABASES = {
     'default': {
@@ -13,6 +23,11 @@ DATABASES = {
         'ATOMIC_REQUESTS': True,
     }
 }
+
+
+###########
+# Logging #
+###########
 
 LOGGING = {
     # バージョンは「1」固定
@@ -59,21 +74,29 @@ LOGGING = {
     },
 }
 
+
+################
+# Static files #
+################
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
 
 
-# # debug toolbar settings
-# def show_toolbar(request):
-#     return True
-#
-#
-# INSTALLED_APPS += (
-#     'debug_toolbar',
-# )
-# MIDDLEWARE += (
-#     'debug_toolbar.middleware.DebugToolbarMiddleware',
-# )
-# DEBUG_TOOLBAR_CONFIG = {
-#     'SHOW_TOOLBAR_CALLBACK': show_toolbar,
-# }
+#################
+# debug toolbar #
+#################
+
+def show_toolbar(request):
+    return True
+
+
+INSTALLED_APPS += (
+    'debug_toolbar',
+)
+MIDDLEWARE += (
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+)
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': show_toolbar,
+}
