@@ -43,11 +43,12 @@ RUN apt-get install -y libmysqlclient-dev
 # Install for SQLite
 RUN apt-get install -y sqlite3
 
-# Deploy Django project
 RUN mkdir -p ${DEPLOY_DIR}
 WORKDIR ${DEPLOY_DIR}
-ADD requirements.txt ${DEPLOY_DIR}
+
+# Install packages for project
+ADD requirements.txt .
 RUN pip3 install -r requirements.txt
 
-# Set env for local
-ENV DJANGO_SETTINGS_MODULE config.settings.local
+# Set entrypoint
+ENTRYPOINT ["/bin/bash", "scripts/init_mysite.sh"]
