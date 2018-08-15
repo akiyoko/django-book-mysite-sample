@@ -43,8 +43,8 @@
     {% for book in book_list %}
     <div class="ui card">
         <div class="image">
-            {% if book.image_path %}
-            <img src="{% get_media_prefix %}{{ book.image_path }}">
+            {% if book.image %}
+            <img src="{{ book.image.url }}">
             {% else %}
             <img src="{% static 'shop/images/no-image.png' %}">
             {% endif %}
