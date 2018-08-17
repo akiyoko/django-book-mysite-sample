@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Install packages for local
+pip3 install -r requirements/local.txt
+
 # Set environment for local
 export DJANGO_SETTINGS_MODULE=config.settings.local
 

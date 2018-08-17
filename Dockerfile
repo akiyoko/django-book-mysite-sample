@@ -37,18 +37,20 @@ RUN update-alternatives --install /usr/local/bin/python3 python3 /usr/local/bin/
 RUN update-alternatives --install /usr/local/bin/pip3 pip3 /usr/local/bin/pip3.6 1
 RUN pip3 install -U pip
 
-# Install for MySQL
+# Install other requisites
+RUN apt-get install -y vim
+# MySQL (option)
 # https://stackoverflow.com/a/25682993
 RUN apt-get install -y libmysqlclient-dev
-# Install for SQLite
+# SQLite (option)
 RUN apt-get install -y sqlite3
 
 RUN mkdir -p ${DEPLOY_DIR}
 WORKDIR ${DEPLOY_DIR}
 
 # Install packages for project
-ADD requirements.txt .
-RUN pip3 install -r requirements.txt
+ADD requirements/base.txt requirements/base.txt
+RUN pip3 install -r requirements/base.txt
 
 # Set entrypoint
 ENTRYPOINT ["/bin/bash", "scripts/init_mysite.sh"]
