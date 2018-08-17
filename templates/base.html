@@ -8,7 +8,7 @@
     <title>{% block page_title %}{% endblock %}</title>
 
     {# --- css --- #}
-    <link rel="stylesheet" href="{% static 'css/semantic.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/semantic/semantic.min.css' %}">
     <style type="text/css">
         body {
             background-color: #dadada;
@@ -36,7 +36,7 @@
 {# --- js --- #}
 <script src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
 <script src="{% static 'js/jquery-ui.min.js' %}"></script>
-<script src="{% static 'js/semantic.min.js' %}"></script>
+<script src="{% static 'vendor/semantic/semantic.min.js' %}"></script>
 {% block extra_js %}{% endblock %}
 </body>
 </html>
