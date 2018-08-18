@@ -73,6 +73,14 @@ LOGGING = {
 }
 
 
+##################
+# Email settings #
+##################
+
+EMAIL_CONFIG = env.email_url('EMAIL_URL')
+vars().update(EMAIL_CONFIG)
+
+
 ###################
 # Stripe settings #
 ###################
