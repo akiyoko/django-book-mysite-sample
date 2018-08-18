@@ -35,9 +35,9 @@ class Book(models.Model):
     image = models.ImageField(verbose_name='画像', null=True, blank=True)
     publisher = models.ForeignKey(Publisher, verbose_name='出版社', on_delete=models.PROTECT)
     authors = models.ManyToManyField(Author, verbose_name='著者')
-    price = models.IntegerField(verbose_name='価格', null=True, blank=True)
+    price = models.PositiveIntegerField(verbose_name='価格', null=True, blank=True, default=0)
     description = models.TextField(verbose_name='概要', null=True, blank=True)
-    publish_date = models.DateField(verbose_name='出版日')
+    publish_date = models.DateField(verbose_name='出版日', null=True, blank=True)
 
     def __str__(self):
         return self.title

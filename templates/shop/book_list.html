@@ -56,7 +56,7 @@
                     <div class="ui horizontal label">著　者</div>{{ book.authors.all.0 }}{% if book.authors.all.1 %}　他{% endif %}
                 </span>
                 <span class="item">
-                    <div class="ui horizontal label">価　格</div>{{ book.price|intcomma }}円
+                    <div class="ui horizontal label">価　格</div>{{ book.price|default_if_none:0|intcomma }}円
                 </span>
                 <span class="item">
                     <div class="ui horizontal label">出版社</div>{{ book.publisher }}
