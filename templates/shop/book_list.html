@@ -30,7 +30,7 @@
 {% block content %}
 <form method="get" action="{% url 'shop:index' %}" class="ui form">
     <div class="ui stacked segment">
-        <div class="field{% if field.errors %} error{% endif %}">
+        <div class="field">
             <div class="ui input">
                 <input type="text" name="keyword" placeholder="キーワード" value="{{ keyword|default:'' }}">
             </div>
