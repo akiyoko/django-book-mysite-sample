@@ -88,8 +88,8 @@ class LoginForm(forms.Form):
         return value
 
     def clean(self):
-        username = self.cleaned_data['username']
-        password = self.cleaned_data['password']
+        username = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
         try:
             user = get_user_model().objects.get(username=username)
         except ObjectDoesNotExist:
