@@ -1,4 +1,4 @@
-Django==2.1
+Django~=1.11
 django-cleanup==2.1.0
 django-debug-toolbar==1.9.1
 django-environ==0.4.5
