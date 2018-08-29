@@ -33,6 +33,11 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'shop.apps.ShopConfig',
     'django_cleanup',
+
+    # 'django.contrib.sites',
+    # 'allauth',
+    # 'allauth.account',
+    # 'allauth.socialaccount',
 ]
 
 
