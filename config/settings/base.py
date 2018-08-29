@@ -142,10 +142,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = '/var/log/{}/static'.format(PROJECT_NAME)
+STATIC_ROOT = '/var/www/{}/static'.format(PROJECT_NAME)
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/var/log/{}/media'.format(PROJECT_NAME)
+MEDIA_ROOT = '/var/www/{}/media'.format(PROJECT_NAME)
 
 
 ########################
