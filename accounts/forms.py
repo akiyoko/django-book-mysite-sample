@@ -28,7 +28,7 @@ class RegisterForm(forms.ModelForm):
     )
 
     def __init__(self, *args, **kwargs):
-        super(RegisterForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         # フィールドの属性を書き換え
         self.fields['email'].required = True
         self.fields['email'].widget.attrs = {'placeholder': 'メールアドレス'}
@@ -54,7 +54,7 @@ class RegisterForm(forms.ModelForm):
         if password != password2:
             raise forms.ValidationError("パスワードと確認用パスワードが合致しません")
         # ユニーク制約を自動でバリデーションしてほしい場合は super の clean() を明示的に呼び出す
-        super(RegisterForm, self).clean()
+        super().clean()
 
 
 class LoginForm(forms.Form):
@@ -73,7 +73,7 @@ class LoginForm(forms.Form):
     )
 
     def __init__(self, *args, **kwargs):
-        super(LoginForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.user_cache = None
 
     def clean_password(self):
@@ -110,7 +110,7 @@ class ProfileForm(forms.ModelForm):
         fields = ('username', 'email', 'last_name', 'first_name',)
 
     def __init__(self, *args, **kwargs):
-        super(ProfileForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields['username'].widget.attrs = {'placeholder': 'ユーザー名'}
         self.fields['email'].required = True
         self.fields['email'].widget.attrs = {'placeholder': 'メールアドレス'}
