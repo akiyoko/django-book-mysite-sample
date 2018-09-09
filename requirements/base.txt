@@ -1,3 +1,4 @@
+wheel==0.31.1
 Django==2.1
 django-cleanup==2.1.0
 django-debug-toolbar==1.9.1
