@@ -2,6 +2,5 @@ wheel==0.31.1
 Django==2.1.1
 django-cleanup==2.1.0
 django-debug-toolbar==1.10
-django-environ==0.4.5
 Pillow==5.2.0
 stripe==2.7.0
