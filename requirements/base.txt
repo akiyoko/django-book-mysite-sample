@@ -1,6 +1,5 @@
-wheel==0.31.1
-Django==2.1.1
-django-cleanup==2.1.0
-django-debug-toolbar==1.10
-Pillow==5.2.0
-stripe==2.7.0
+wheel==0.33.1
+Django==2.1.7
+django-cleanup==3.2.0
+Pillow==5.4.1
+stripe==2.21.0
