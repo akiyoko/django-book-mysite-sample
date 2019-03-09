@@ -4,12 +4,8 @@
 サンプルプロジェクトのテーマは「本のオンラインショップ」です。
 なおこのサンプルコードは予告なく変更されることがありますのでご了承ください。
 
-サンプルコードは対応する Django のバージョンごとにリポジトリが分かれています。
-
-* サンプルコード（Django 2.1 バージョン）
-  * https://github.com/akiyoko/django-book-mysite-sample/tree/django-book-v2
-* サンプルコード（Django 1.11 バージョン）
-  * https://github.com/akiyoko/django-book-mysite-sample/tree/django-book-v1
+* サンプルコード（Django 2.2 バージョン）
+  * https://github.com/akiyoko/django-book-mysite-sample/
 
 サンプルコードでは主に、ログイン画面と商品リスト画面まわりの実装をしています。
 画面遷移は次のようになっています。
@@ -29,19 +25,19 @@ Docker を利用しますので、事前に「Docker for Mac」（https://www.do
 まず、サンプルコードを GitHub からダウンロードします。
 作業場所はどこでも構いませんが、今回の例では PyCharm のデフォルトのワークスペース「~/PycharmProjects/」を作業場所にしています。
 
-次の Git コマンドを実行して、「django-book-v2」ブランチをダウンロードします。
+次の Git コマンドを実行して、master ブランチをダウンロードします。
 ここではプロジェクトのベースディレクトリ名を「mysite-sample」としています。
 
 ```
 $ cd ~/PycharmProjects/
-$ git clone -b django-book-v2 https://github.com/akiyoko/django-book-mysite-sample.git mysite-sample
+$ git clone https://github.com/akiyoko/django-book-mysite-sample.git mysite-sample
 ```
 
 
 ### 2. サンプルプロジェクト用 Docker イメージの作成
 
 clone したディレクトリに移動して、その直下にある Dockerfile から Docker イメージを作成します。
-Docker イメージは Ubuntu 16.04 LTS をベースに、python3、pip3 などの最低限必要となるソフトウェアと、
+Docker イメージは Ubuntu 18.04 LTS をベースに、python3、pip3 などの最低限必要となるソフトウェアと、
 サンプルプロジェクトの requirements.txt に記載された各種パッケージをインストールしています。
 
 ```

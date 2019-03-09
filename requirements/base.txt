@@ -1,5 +1,5 @@
 wheel==0.33.1
-Django==2.1.7
+Django==2.2b1
 django-cleanup==3.2.0
 Pillow==5.4.1
 stripe==2.21.0
