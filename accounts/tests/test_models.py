@@ -5,7 +5,9 @@ from django.test import TestCase
 class TestCustomUser(TestCase):
 
     def setUp(self):
-        print("# {} is running!".format(self.id()))
+        # Note: Use -v 3 option!
+        # print("# {} is running!".format(self.id()))
+        pass
 
     def test_post_login(self):
         """

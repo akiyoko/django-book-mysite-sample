@@ -6,7 +6,8 @@ class TestRegisterView(TestCase):
     """RegisterViewのテスト"""
 
     def setUp(self):
-        print("# {} is running!".format(self.id()))
+        # Note: Use -v 3 option!
+        # print("# {} is running!".format(self.id()))
         # データベースに登録済みのユーザーを self.user にセット
         self.user = get_user_model().objects.create_user(
             username='admin', email='admin@example.com', password='pass')

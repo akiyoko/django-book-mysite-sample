@@ -30,14 +30,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    'accounts.apps.AccountsConfig',
-    'shop.apps.ShopConfig',
+
+    # 3rd party apps
     'django_cleanup',
 
-    # 'django.contrib.sites',
-    # 'allauth',
-    # 'allauth.account',
-    # 'allauth.socialaccount',
+    # My applications
+    'accounts.apps.AccountsConfig',
+    'shop.apps.ShopConfig',
 ]
 
 

@@ -1,4 +1,4 @@
 -r base.txt
 coverage==4.5.4
 selenium==3.141.0
-chromedriver-binary==76.0.3809.126.0
+chromedriver-binary

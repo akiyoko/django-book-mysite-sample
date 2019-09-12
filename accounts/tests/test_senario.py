@@ -25,7 +25,8 @@ class TestLoginSenario(StaticLiveServerTestCase):
         # Note: ChromeDriverのパスを通すためにimportが必要
         print(chromedriver_binary.chromedriver_filename)
         chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument('--headless')
+        # headlessモード
+        # chrome_options.add_argument('--headless')
         cls.selenium = webdriver.Chrome(chrome_options=chrome_options)
         cls.selenium.implicitly_wait(5)
 
@@ -38,11 +39,13 @@ class TestLoginSenario(StaticLiveServerTestCase):
             os.remove(self._get_screenshot_filepath())
 
     def tearDown(self):
-        # エラーが発生したらスクリーンショットを撮る
-        for method, error in self._outcome.errors:
-            if error:
-                self.selenium.save_screenshot(self._get_screenshot_filepath())
-                break
+        # スクリーンショットを撮る
+        self.selenium.save_screenshot(self._get_screenshot_filepath())
+        # # エラーが発生したらスクリーンショットを撮る
+        # for method, error in self._outcome.errors:
+        #     if error:
+        #         self.selenium.save_screenshot(self._get_screenshot_filepath())
+        #         break
         super().tearDown()
 
     @classmethod
@@ -51,7 +54,7 @@ class TestLoginSenario(StaticLiveServerTestCase):
         #       tearDownClassでcls.selenium.quit()を実行すると、
         #       「ConnectionResetError: [WinError 10054] 既存の接続はリモート ホストに強制的に切断されました。」
         #       というエラーが頻繁に発生してしまう
-        # cls.selenium.quit()
+        cls.selenium.quit()
         super().tearDownClass()
 
     def _get_screenshot_filepath(self):
