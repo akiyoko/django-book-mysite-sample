@@ -1,5 +1,5 @@
 -r base.txt
 django-environ==0.4.5
 gunicorn==19.9.0
-mysqlclient==1.4.4
-psycopg2-binary==2.8.3
+#mysqlclient==1.4.4
+#psycopg2-binary==2.8.3
