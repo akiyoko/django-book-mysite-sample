@@ -17,7 +17,7 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
-# Install the latest Python 3.6
+# Install Python 3.7
 RUN apt install -y wget \
     build-essential \
     zlib1g-dev \
@@ -26,15 +26,15 @@ RUN apt install -y wget \
     # https://stackoverflow.com/a/29862854
     libsqlite3-dev
 WORKDIR ${HOME}
-RUN wget https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tgz \
-    && tar zxf Python-3.6.8.tgz \
-    && cd Python-3.6.8 \
+RUN wget https://www.python.org/ftp/python/3.7.5/Python-3.7.5.tgz \
+    && tar zxf Python-3.7.5.tgz \
+    && cd Python-3.7.5 \
     && ./configure --enable-optimizations \
     && make altinstall
 
 # Set alias
-RUN update-alternatives --install /usr/local/bin/python3 python3 /usr/local/bin/python3.6 1
-RUN update-alternatives --install /usr/local/bin/pip3 pip3 /usr/local/bin/pip3.6 1
+RUN update-alternatives --install /usr/local/bin/python3 python3 /usr/local/bin/python3.7 1
+RUN update-alternatives --install /usr/local/bin/pip3 pip3 /usr/local/bin/pip3.7 1
 RUN pip3 install -U pip
 
 # Install other requisites
