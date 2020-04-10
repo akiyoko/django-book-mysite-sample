@@ -1,4 +1,4 @@
 -r base.txt
-coverage==4.5.4
-selenium==3.141.0
-chromedriver-binary
+coverage==5.0.*
+selenium==3.141.*
+chromedriver-binary==81.0.*
